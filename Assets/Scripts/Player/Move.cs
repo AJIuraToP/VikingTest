@@ -26,7 +26,6 @@ public class Move : MonoBehaviour
     private void Update()
     {
         health = PlayerUI.health;
-        Debug.Log(health);
         PlayerMove();
         PlayerGravity();
         PlayerAttack();
@@ -34,7 +33,7 @@ public class Move : MonoBehaviour
 
     public void PlayerMove()
     {
-        if (bruteController.isGrounded)
+        if (bruteController.isGrounded && !brutAnimator.GetBool("Dead"))
         {
             //движение
             moveVector = Vector3.zero;
@@ -67,15 +66,18 @@ public class Move : MonoBehaviour
             brutAnimator.SetTrigger("Attack");
             gun.SetActive(true);
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse0)) ;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "MutantWeapon")
         {
-            brutAnimator.SetTrigger("Damage");
-            if(PlayerUI.health != 0)PlayerUI.health -= 1 ;
-            else if(PlayerUI.health <= 0) brutAnimator.SetBool("Dead",true);
+            Debug.Log($"HealthPoint: {PlayerUI.health}");
+            if (PlayerUI.health > 0)
+            {
+                brutAnimator.SetTrigger("Damage");
+                PlayerUI.health -= 1 ;
+            }
+            else brutAnimator.SetBool("Dead",true);
         }
         
     }

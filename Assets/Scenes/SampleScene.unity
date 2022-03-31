@@ -938,8 +938,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.13453777, y: -0.0229163, z: 0.0031122428, w: 0.99063855}
-  m_LocalPosition: {x: 0.21154785, y: 1.1864394, z: -4.5700073}
+  m_LocalRotation: {x: 0.3210886, y: -0.023089107, z: -0.0013175724, w: 0.94676673}
+  m_LocalPosition: {x: 0.21154785, y: 2.8120022, z: -3.7927856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2036166486}
@@ -1122,7 +1122,6 @@ MonoBehaviour:
   - {fileID: 0}
   mutant: {fileID: 8358461358742810960, guid: ac12f57e84d88d5498e75ee6dd6a5e6b, type: 3}
   player: {fileID: 5409862969129645563}
-  Pool: {fileID: 0}
 --- !u!4 &1354807882
 Transform:
   m_ObjectHideFlags: 0
@@ -2299,7 +2298,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036166485}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 252.16846, y: 20.29356, z: 286.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

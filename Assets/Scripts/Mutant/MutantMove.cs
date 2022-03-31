@@ -11,40 +11,39 @@ public class MutantMove : MonoBehaviour
     private float speedMove;
     private float gravityForce;
     private bool move = true;
-    private byte health = 1; 
-    
-   
-    private Vector3 moveVector;
-    private Animator brutAnimator;
+
+
+ 
     public GameObject player;
     public Collider mesh ;
-    private CharacterController bruteController;
+    private CharacterController mutantController;
+    private Vector3 moveVector;
+    private Animator mutantAnimator;
     public void OnEnable()
     {
         player = GameObject.FindWithTag("Player");
-        brutAnimator = GetComponent<Animator>();
-        bruteController = GetComponent<CharacterController>();
+        mutantAnimator = GetComponent<Animator>();
+        mutantController = GetComponent<CharacterController>();
         transform.LookAt(player.transform);
-        brutAnimator.SetInteger("Health",1);
+        mutantAnimator.SetInteger("Health",1);
     }
 
     public void Update()
     {
         
-        if (move && brutAnimator.GetInteger("Health" ) != 0&& PlayerUI.playMode)
+        if (move && mutantAnimator.GetInteger("Health" ) != 0&& PlayerUI.playMode)
         {
             transform.LookAt(player.transform.position);
-            brutAnimator.SetBool("Move",true);
+            mutantAnimator.SetBool("Move",true);
             transform.position = Vector3.Lerp(transform.position, player.transform.position,Random.Range(0.5f,0.9f) * Time.deltaTime);
         }
-        else brutAnimator.SetBool("Move",false);
+        else mutantAnimator.SetBool("Move",false);
         PlayerGravity();
-        moveVector.y = gravityForce;
     }
     
     public void PlayerGravity()//гравитация игрока
     {
-        if (!bruteController.isGrounded) gravityForce -= 20 * Time.deltaTime;
+        if (!mutantController.isGrounded) gravityForce -= 20 * Time.deltaTime;
         else gravityForce -= 1;
     }
     public void OnTriggerStay(Collider other)
@@ -61,7 +60,7 @@ public class MutantMove : MonoBehaviour
     {
         if (other.tag == "Weapon")
         {
-            brutAnimator.SetInteger("Health",0);
+            mutantAnimator.SetInteger("Health",0);
             PlayerUI.score += 1;
             mesh.enabled = false;
             Invoke("Respawn",5f);
